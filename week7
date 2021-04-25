@@ -1,0 +1,41 @@
+import random
+
+def get_n_random_numbers(n=10,min=-5,max=5):
+    numbers=[]
+    for i in range(n):
+        numbers.append(random.randint(min,max))
+    return numbers
+def my_bubble_sort(my_list):
+    n=len(my_list)
+    comp_counter=0
+    swap_counter=0
+    for i in range(n-1,-1,-1):
+        for j in range(0,i):
+            comp_counter+=1
+            if not (my_list[j]<my_list[j+1]):
+                temp=my_list[j]
+                my_list[j]=my_list[j+1]
+                my_list[j+1]=temp
+                swap_counter+=1
+    return swap_counter,comp_counter
+def my_selection_sort(my_list):
+    comp_counter=0
+    swap_counter=0
+    for i in range(len(my_list)):
+        min=i
+        for j in range(i+1,len(my_list)):
+            comp_counter+=1
+            if my_list[min]> my_list[j]:
+                min=j
+                swap_counter+=1
+    my_list[i],my_list[min],= my_list[min],my_list[i]
+    return swap_counter,comp_counter
+
+mylist1=get_n_random_numbers(10,-100,100)
+print(mylist1)
+result1=my_selection_sort(mylist1)
+print(mylist1,result1)
+mylist2=get_n_random_numbers(10,-100,100)
+result2=my_bubble_sort(mylist2)
+print(mylist2,result2)
+
